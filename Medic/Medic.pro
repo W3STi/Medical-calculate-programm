@@ -9,38 +9,42 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    form1.cpp \
-    form2.cpp \
-    form3.cpp \
-    form4.cpp \
-    form5.cpp \
-    form6.cpp \
-    form7.cpp \
-    form8.cpp \
-    main.cpp \
-    mainwindow.cpp
+    forms/src/form1.cpp \
+    forms/src/form2.cpp \
+    forms/src/form3.cpp \
+    forms/src/form4.cpp \
+    forms/src/form5.cpp \
+    forms/src/form6.cpp \
+    forms/src/form7.cpp \
+    forms/src/form8.cpp \
+    src/main.cpp \
+    src/mainwindow.cpp
 
 HEADERS += \
-    form1.h \
-    form2.h \
-    form3.h \
-    form4.h \
-    form5.h \
-    form6.h \
-    form7.h \
-    form8.h \
-    mainwindow.h
+    forms/include/form1.h \
+    forms/include/form2.h \
+    forms/include/form3.h \
+    forms/include/form4.h \
+    forms/include/form5.h \
+    forms/include/form6.h \
+    forms/include/form7.h \
+    forms/include/form8.h \
+    include/mainwindow.h
 
 FORMS += \
-    form1.ui \
-    form2.ui \
-    form3.ui \
-    form4.ui \
-    form5.ui \
-    form6.ui \
-    form7.ui \
-    form8.ui \
-    mainwindow.ui
+    forms/ui/form1.ui \
+    forms/ui/form2.ui \
+    forms/ui/form3.ui \
+    forms/ui/form4.ui \
+    forms/ui/form5.ui \
+    forms/ui/form6.ui \
+    forms/ui/form7.ui \
+    forms/ui/form8.ui \
+    ui/mainwindow.ui
+
+INCLUDEPATH += \ 
+    $$PWD/include \
+    $$PWD/forms/include
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
