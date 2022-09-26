@@ -1,5 +1,3 @@
-/*
-!/Medic
-!/Executable
-!/README.txt
-!.gitignore
+*.user*
+/build*
+
