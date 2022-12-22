@@ -14,8 +14,7 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">font-family: Verdana;
-color: #292929;</string>
+   <string notr="true"/>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="2">
@@ -102,7 +101,7 @@ font-weight: bold;</string>
       <bool>false</bool>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: #cfffe5;</string>
+      <string notr="true"/>
      </property>
      <property name="title">
       <string/>
@@ -538,7 +537,7 @@ font-weight: bold;</string>
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: #E0FFFF;</string>
+      <string notr="true"/>
      </property>
      <property name="tabShape">
       <enum>QTabWidget::Triangular</enum>

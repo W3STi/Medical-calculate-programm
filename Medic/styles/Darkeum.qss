@@ -24,7 +24,7 @@ QPushButton#pushButton_5 {
 }
 
 QGroupBox {
-    background-color: #eeeeee;
+    background-color: #FAEBD7;
     border-radius: 5px;
     border: 1px solid #6495ED;
 }
@@ -35,7 +35,7 @@ QLabel {
 }
 
 QLabel#label_12 {
-    	color: #4B0082;
+        color: #4B0082;
 }
 
 tabWidget::pane {
@@ -58,6 +58,10 @@ QDoubleSpinBox {
 
 QTabWidget::pane {
 	border-radius: 3px;
+}
+
+QGraphicsView {
+    background-color: #FAEBD7;
 }
 
 QTabBar {
