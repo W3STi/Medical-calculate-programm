@@ -19,6 +19,10 @@ SOURCES += \
     forms/src/form6.cpp \
     forms/src/form7.cpp \
     forms/src/form8.cpp \
+    src/arrow.cpp \
+    src/mygraphicsitem.cpp \
+    src/mylineedit.cpp \
+    src/myscene.cpp \
     src/main.cpp \
     src/mainwindow.cpp
 
@@ -33,6 +37,10 @@ HEADERS += \
     forms/include/form6.h \
     forms/include/form7.h \
     forms/include/form8.h \
+    include/arrow.h \
+    include/mygraphicsitem.h \
+    include/mylineedit.h \
+    include/myscene.h \
     include/mainwindow.h
 
 FORMS += \
