@@ -1,9 +1,11 @@
 #ifndef FORM2_H
 #define FORM2_H
 
+#include <QGraphicsView>
 #include <QWidget>
 
-namespace Ui {
+namespace Ui
+{
 class Form2;
 }
 
@@ -12,11 +14,29 @@ class Form2 : public QWidget
     Q_OBJECT
 
 public:
-    explicit Form2(QWidget *parent = nullptr);
+    explicit Form2(QWidget* parent = nullptr);
     ~Form2();
 
+    double indOkano;
+    double rA;
+    double rB;
+
+signals:
+    void signal(bool flag);
+
+private slots:
+    void on_pushButton_5_clicked();
+
+    void on_doubleSpinBox_valueChanged(double arg1);
+
+    void on_doubleSpinBox_2_valueChanged(double arg1);
+
+    void on_pushButton_3_clicked();
+
+    void on_pushButton_4_clicked();
+
 private:
-    Ui::Form2 *ui;
+    Ui::Form2* ui;
 };
 
 #endif // FORM2_H
