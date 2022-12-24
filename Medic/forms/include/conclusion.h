@@ -1,8 +1,6 @@
 #ifndef CONCLUSION_H
 #define CONCLUSION_H
 
-#include "mainwindow.h"
-
 #include <QGraphicsView>
 #include <QWidget>
 
