@@ -48,10 +48,10 @@ MyGraphicsItem* MyScene::CreatePoint()
 {
     MyGraphicsItem* item = new MyGraphicsItem();
     QPolygonF polygon;
-    polygon << QPointF( -5, -5 )
-            << QPointF( -5, 5 )
-            << QPointF( 5, 5 )
-            << QPointF( 5, -5 );
+    polygon << QPointF( -7, -7 )
+            << QPointF( -7, 7 )
+            << QPointF( 7, 7 )
+            << QPointF( 7, -7 );
 
     /*
     int n = 32;
@@ -74,6 +74,10 @@ Arrow* MyScene::CreateArrow( MyGraphicsItem* startItem, MyGraphicsItem* endItem 
 {
     Arrow* arrow = new Arrow( startItem, endItem, ratio );
     arrow->setColor( color_arrow );
+    if ( spin_box != nullptr )
+    {
+        arrow->setSpinBox( spin_box );
+    }
     startItem->AddArrow( arrow );
     endItem->AddArrow( arrow );
     arrow->setZValue( -1000.0 );
@@ -97,7 +101,7 @@ void MyScene::mousePressEvent( QGraphicsSceneMouseEvent* mouseEvent )
 
         line = new QGraphicsLineItem( QLineF( mouseEvent->scenePos(),
             mouseEvent->scenePos() ) );
-        line->setPen( QPen( Qt::black, 2 ) );
+        line->setPen( QPen( color_arrow, 3 ) );
         addItem( line );
         state = LineStart;
         break;
@@ -186,4 +190,9 @@ void MyScene::mouseReleaseEvent( QGraphicsSceneMouseEvent* mouseEvent )
 
 void MyScene::mouseDoubleClickEvent( QGraphicsSceneMouseEvent* mouseEvent )
 {
+}
+
+void MyScene::setSpinBox( QDoubleSpinBox* spin )
+{
+    spin_box = spin;
 }

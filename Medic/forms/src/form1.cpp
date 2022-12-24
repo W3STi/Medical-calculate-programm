@@ -93,4 +93,5 @@ void Form1::on_toolButton_2_clicked()
 {
     getCurrentScene()->SetState( MyScene::Line );
     getCurrentScene()->setColorArrow( 0xff7a83 );
+    getCurrentScene()->setSpinBox( ui->doubleSpinBox_2 );
 }

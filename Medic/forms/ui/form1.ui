@@ -29,6 +29,7 @@
       <font>
        <family>Verdana</family>
        <pointsize>10</pointsize>
+       <weight>9</weight>
        <italic>false</italic>
        <bold>false</bold>
       </font>
@@ -59,6 +60,7 @@ color: rgb(170, 0, 0);
       <font>
        <family>Verdana</family>
        <pointsize>11</pointsize>
+       <weight>75</weight>
        <italic>false</italic>
        <bold>true</bold>
       </font>
@@ -200,6 +202,9 @@ font-weight: bold;</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
+        </property>
+        <property name="maximum">
+         <double>1000000.000000000000000</double>
         </property>
         <property name="singleStep">
          <double>0.100000000000000</double>

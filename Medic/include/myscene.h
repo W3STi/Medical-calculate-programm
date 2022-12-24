@@ -2,6 +2,7 @@
 #define MYSCENE_H
 
 #include "mygraphicsitem.h"
+#include <QDoubleSpinBox>
 #include <QGraphicsScene>
 #include <QLineEdit>
 
@@ -24,6 +25,7 @@ public:
     void SetRatio( const double );
     void SetState( const State );
     void setColorArrow( QColor color ) { color_arrow = color; }
+    void setSpinBox( QDoubleSpinBox* );
 
     QPixmap GetPixmap();
     double GetRatio();
@@ -59,6 +61,7 @@ private:
     double ratio = 1.0; ///< mm / pix
     State state = None;
     QColor color_arrow = Qt::red;
+    QDoubleSpinBox* spin_box = nullptr;
 };
 
 #endif // MYSCENE_H

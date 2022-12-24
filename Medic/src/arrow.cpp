@@ -14,7 +14,7 @@ Arrow::Arrow( MyGraphicsItem* startItem, MyGraphicsItem* endItem, double ratio, 
     myEndItem = endItem;
     setFlag( QGraphicsItem::ItemIsSelectable, true );
     myColor = Qt::black;
-    setPen( QPen( myColor, 2, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin ) );
+    setPen( QPen( myColor, 3, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin ) );
 
     proxy_widget = new QGraphicsProxyWidget( this );
     label = new QLabel( QString::number( sqrt( pow( endItem->pos().x() - startItem->pos().x(), 2 ) + pow( endItem->pos().y() - startItem->pos().y(), 2 ) ) * scene_ratio ) + "mm" );
@@ -51,7 +51,9 @@ void Arrow::updatePosition()
         label->setVisible( false );
     }
     label->setGeometry( rect.x() + rect.width() / 2 - 60, rect.y() + rect.height() / 2 - 12, 120, 25 );
-    label->setText( QString::number( sqrt( pow( myEndItem->pos().x() - myStartItem->pos().x(), 2 ) + pow( myEndItem->pos().y() - myStartItem->pos().y(), 2 ) ) * scene_ratio ) + "mm" );
+    razmer = sqrt( pow( myEndItem->pos().x() - myStartItem->pos().x(), 2 ) + pow( myEndItem->pos().y() - myStartItem->pos().y(), 2 ) ) * scene_ratio;
+    label->setText( QString::number( razmer ) + "mm" );
+    spin_box->setValue( razmer );
 }
 
 void Arrow::paint( QPainter* painter, const QStyleOptionGraphicsItem*,
@@ -108,4 +110,9 @@ void Arrow::paint( QPainter* painter, const QStyleOptionGraphicsItem*,
         myLine.translate( 0, -8.0 );
         painter->drawLine( myLine );
     }
+}
+
+void Arrow::setSpinBox( QDoubleSpinBox* spin )
+{
+    spin_box = spin;
 }
