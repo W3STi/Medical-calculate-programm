@@ -9,6 +9,8 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    forms/src/helloform.cpp \
+    forms/src/conclusion.cpp \
     forms/src/form1.cpp \
     forms/src/form2.cpp \
     forms/src/form3.cpp \
@@ -21,6 +23,8 @@ SOURCES += \
     src/mainwindow.cpp
 
 HEADERS += \
+    forms/include/helloform.h \
+    forms/include/conclusion.h \
     forms/include/form1.h \
     forms/include/form2.h \
     forms/include/form3.h \
@@ -32,6 +36,8 @@ HEADERS += \
     include/mainwindow.h
 
 FORMS += \
+    forms/ui/helloform.ui \
+    forms/ui/conclusion.ui \
     forms/ui/form1.ui \
     forms/ui/form2.ui \
     forms/ui/form3.ui \
@@ -50,3 +56,8 @@ INCLUDEPATH += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    resourses.qrc
+
+DISTFILES +=

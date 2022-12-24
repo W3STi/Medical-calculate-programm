@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>styles/Darkeum.qss</file>
+        <file>styles/background.jpg</file>
+        <file>styles/fon.png</file>
+    </qresource>
+</RCC>
