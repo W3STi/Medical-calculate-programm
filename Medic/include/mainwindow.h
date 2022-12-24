@@ -12,6 +12,7 @@
 #include "form8.h"
 #include "helloform.h"
 
+#include <QGridLayout>
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
@@ -48,9 +49,9 @@ public:
     double pN;
     QString conc;
 
-    //QVector<QWidget*> formList;
+    // QVector<QWidget*> formList;
 
-    MainWindow(QWidget* parent = nullptr);
+    MainWindow( QWidget* parent = nullptr );
     ~MainWindow();
 
 private slots:
@@ -58,8 +59,8 @@ private slots:
 
 public slots:
     void set1Win();
-    void set2Win(bool flag);
-    void set3Win(bool flag);
+    void set2Win( bool flag );
+    void set3Win( bool flag );
     void set4Win();
     void set5Win();
     void set6Win();
@@ -73,9 +74,10 @@ public slots:
     void getlN(double p);
 
 signals:
-    void signal(double p);
+    void signal( double p );
 
 private:
     Ui::MainWindow* ui;
+    QGridLayout* gridLayout;
 };
 #endif // MAINWINDOW_H
