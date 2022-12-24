@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+//#include "conclusion.h"
 #include "form1.h"
 #include "form2.h"
 #include "form3.h"
@@ -35,6 +36,7 @@ public:
     Form6* form6;
     Form7* form7;
     Form8* form8;
+    //conclusion* con;
 
     double indSphere;
     double angleA;
@@ -43,6 +45,9 @@ public:
     double ISA;
     double angleC;
     double aK;
+    double lN;
+    double pN;
+    QString conc;
 
     // QVector<QWidget*> formList;
 
@@ -59,12 +64,14 @@ public slots:
     void set4Win();
     void set5Win();
     void set6Win();
-    void checkParams();
-    void getIndSphere( double p );
-    void getAngleAB( double pA, double pB );
-    void getICASandISA( double pIC, double pIS );
-    void getAngleC( double p );
-    void getAK( double p );
+    void setLastWin();
+    void checkParams(double p);
+    void getIndSphere(double p);
+    void getAngleAB(double pA, double pB);
+    void getICASandISA(double pIC, double pIS);
+    void getAngleC(double p);
+    void getAK(double p);
+    void getlN(double p);
 
 signals:
     void signal( double p );

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1045</width>
-    <height>548</height>
+    <height>554</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -279,7 +279,7 @@ font-weight: bold;</string>
          </font>
         </property>
         <property name="text">
-         <string> B =</string>
+         <string> Б =</string>
         </property>
        </widget>
       </item>
