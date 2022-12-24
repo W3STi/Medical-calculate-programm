@@ -26,3 +26,23 @@ void Form7::on_pushButton_5_clicked()
 {
     qApp->exit(0);
 }
+
+void Form7::on_doubleSpinBox_valueChanged(double arg1)
+{
+    G = arg1;
+}
+
+void Form7::on_doubleSpinBox_2_valueChanged(double arg1)
+{
+    YOB = arg1;
+}
+
+void Form7::on_pushButton_3_clicked()
+{
+    ui->doubleSpinBox_3->setValue(YOB + (30.0 - G));
+}
+
+void Form7::on_pushButton_4_clicked()
+{
+    emit signal(YOB + (30.0 - G));
+}

@@ -2,7 +2,10 @@
 #include "ui_helloform.h"
 #include <QGridLayout>
 
+#include <QApplication>
+#include <QDesktopWidget>
 #include <QLabel>
+#include <QLayout>
 #include <QMessageBox>
 #include <QPushButton>
 #include <QSpacerItem>
@@ -14,6 +17,15 @@ HelloForm::HelloForm(QWidget* parent)
     , ui(new Ui::HelloForm)
 {
     ui->setupUi(this);
+
+    /*ui->img->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
+    ui->img->setScaledContents(true);
+
+    QPixmap pM(":/styles/background.jpg");
+    ui->img->setPixmap(pM.scaled(pM.size()));
+
+    ui->img->setPixmap(pM.scaled(QApplication::desktop()->screenGeometry().width(),
+        QApplication::desktop()->screenGeometry().height(), Qt::KeepAspectRatio));*/
 }
 
 HelloForm::~HelloForm()

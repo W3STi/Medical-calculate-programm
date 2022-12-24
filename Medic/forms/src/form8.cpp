@@ -26,3 +26,18 @@ void Form8::on_pushButton_5_clicked()
 {
     qApp->exit(0);
 }
+
+void Form8::on_doubleSpinBox_valueChanged(double arg1)
+{
+    D = arg1;
+}
+
+void Form8::on_pushButton_3_clicked()
+{
+    ui->doubleSpinBox_2->setValue(25.0 - D);
+}
+
+void Form8::on_pushButton_4_clicked()
+{
+    emit signal(25.0 - D);
+}
