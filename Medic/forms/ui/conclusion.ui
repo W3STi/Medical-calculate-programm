@@ -70,20 +70,7 @@ font-family: Verdana;</string>
     </widget>
    </item>
    <item row="0" column="0" colspan="2">
-    <widget class="QLabel" name="label">
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>300</height>
-      </size>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-     </property>
-    </widget>
+    <widget class="QTextBrowser" name="textBrowser"/>
    </item>
   </layout>
  </widget>

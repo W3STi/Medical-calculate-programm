@@ -102,8 +102,9 @@ void Arrow::updatePosition()
             {
                 point_C = arrow->endItem();
             }
+            arrow->updatePosition();
         }
-        spin_box->setValue( getAngleABC( point_A->pos(), point_B->pos(), point_C->pos() ) );
+        spin_box->setValue( qAbs( ( int )( getAngleABC( point_A->pos(), point_B->pos(), point_C->pos() ) ) % 180 ) );
         label->setText( QString::number( spin_box->value() ) + " °" );
     }
     else

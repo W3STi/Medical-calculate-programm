@@ -29,7 +29,6 @@
       <font>
        <family>Verdana</family>
        <pointsize>10</pointsize>
-       <weight>9</weight>
        <italic>false</italic>
        <bold>false</bold>
       </font>
@@ -59,7 +58,6 @@ color: rgb(170, 0, 0);</string>
       <font>
        <family>Verdana</family>
        <pointsize>11</pointsize>
-       <weight>75</weight>
        <italic>false</italic>
        <bold>true</bold>
       </font>
@@ -212,6 +210,9 @@ font-weight: bold;</string>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
         </property>
+        <property name="maximum">
+         <double>10000.000000000000000</double>
+        </property>
         <property name="singleStep">
          <double>0.100000000000000</double>
         </property>
@@ -343,10 +344,10 @@ font-weight: bold;</string>
          <set>Qt::AlignCenter</set>
         </property>
         <property name="minimum">
-         <double>-10000.000000000000000</double>
+         <double>0.000000000000000</double>
         </property>
         <property name="maximum">
-         <double>10000.989999999999782</double>
+         <double>180.000000000000000</double>
         </property>
         <property name="singleStep">
          <double>0.100000000000000</double>
@@ -426,6 +427,9 @@ font-weight: bold;</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
+        </property>
+        <property name="maximum">
+         <double>180.000000000000000</double>
         </property>
         <property name="singleStep">
          <double>0.100000000000000</double>
@@ -618,6 +622,19 @@ font-weight: bold;</string>
         </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="8" column="2">
+       <widget class="QPushButton" name="pushButton">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Очистить</string>
         </property>
        </widget>
       </item>
