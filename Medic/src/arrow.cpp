@@ -50,10 +50,83 @@ void Arrow::updatePosition()
     {
         label->setVisible( false );
     }
-    label->setGeometry( rect.x() + rect.width() / 2 - 60, rect.y() + rect.height() / 2 - 12, 120, 25 );
-    razmer = sqrt( pow( myEndItem->pos().x() - myStartItem->pos().x(), 2 ) + pow( myEndItem->pos().y() - myStartItem->pos().y(), 2 ) ) * scene_ratio;
-    label->setText( QString::number( razmer ) + "mm" );
-    spin_box->setValue( razmer );
+    label->setGeometry( rect.x() + rect.width() / 2 - 40, rect.y() + rect.height() / 2 - 12, 80, 25 );
+
+    if ( Circle == type_arrow )
+    {
+        if ( circle == nullptr )
+        {
+            circle = new QGraphicsEllipseItem( this );
+        }
+
+        int radius = qSqrt( qPow( line.p1().x() - line.p2().x(), 2 ) + qPow( line.p1().y() - line.p2().y(), 2 ) );
+
+        circle->setRect( line.p1().x() - radius,
+            line.p1().y() - radius,
+            2 * radius,
+            2 * radius );
+    }
+    if ( Angle == type_arrow )
+    {
+        auto point_A = myStartItem;
+        auto point_B = myEndItem;
+        auto point_C = point_B;
+        if ( point_A->getArrows().size() > 1 )
+        {
+            point_A = myEndItem;
+            point_B = myStartItem;
+        }
+
+        auto arrow_mid = point_B->getArrows();
+        if ( arrow_mid.size() == 1 )
+        {
+            label->setText( QString::number( 0 ) + " °" );
+        }
+        else
+        {
+            Arrow* arrow;
+            if ( arrow_mid[0] != this )
+            {
+                arrow = arrow_mid[0];
+            }
+            else if ( arrow_mid[1] != this )
+            {
+                arrow = arrow_mid[1];
+            }
+
+            if ( arrow->startItem() != point_B )
+            {
+                point_C = arrow->startItem();
+            }
+            else
+            {
+                point_C = arrow->endItem();
+            }
+        }
+        spin_box->setValue( getAngleABC( point_A->pos(), point_B->pos(), point_C->pos() ) );
+        label->setText( QString::number( spin_box->value() ) + " °" );
+    }
+    else
+    {
+        razmer = sqrt( pow( myEndItem->pos().x() - myStartItem->pos().x(), 2 ) + pow( myEndItem->pos().y() - myStartItem->pos().y(), 2 ) ) * scene_ratio;
+        if ( Circle == type_arrow )
+            razmer *= 2;
+        label->setText( QString::number( razmer ) + "px" );
+        spin_box->setValue( razmer );
+    }
+}
+
+double Arrow::getAngleABC( QPointF point_a, QPointF point_b, QPointF point_c )
+{
+    QPointF ab = { point_b.x() - point_a.x(), point_b.y() - point_a.y() };
+    QPointF cb = { point_b.x() - point_c.x(), point_b.y() - point_c.y() };
+
+    float dot = ( ab.x() * cb.x() + ab.y() * cb.y() );   // dot product
+    float cross = ( ab.x() * cb.y() - ab.y() * cb.x() ); // cross product
+
+    float alpha = atan2( cross, dot );
+
+    return ( int )floor( alpha * 180. / 3.1415926 + 0.5 );
 }
 
 void Arrow::paint( QPainter* painter, const QStyleOptionGraphicsItem*,
@@ -64,41 +137,12 @@ void Arrow::paint( QPainter* painter, const QStyleOptionGraphicsItem*,
 
     QPen myPen = pen();
     myPen.setColor( myColor );
-    // qreal arrowSize = 20;
     painter->setPen( myPen );
     painter->setBrush( myColor );
 
     QLineF centerLine( myStartItem->pos(), myEndItem->pos() );
     QPolygonF endPolygon = myEndItem->polygon();
-    // QPointF p1 = endPolygon.first() + myEndItem->pos();
-    // QPointF p2;
-    // QPointF intersectPoint = p1;
-    // QLineF polyLine;
-    /*
-        for (int i = 1; i < endPolygon.count(); ++i) {
-            p2 = endPolygon.at(i) + myEndItem->pos();
-            polyLine = QLineF(p1, p2);
-            QLineF::IntersectType intersectType =
-                polyLine.intersect(centerLine, &intersectPoint);
-            if (intersectType == QLineF::BoundedIntersection)
-                break;
-            p1 = p2;
-        }
-    */
     setLine( QLineF( myEndItem->pos(), myStartItem->pos() ) );
-    /*
-        double angle = std::atan2(-line().dy(), line().dx());
-
-        QPointF arrowP1 = line().p1() + QPointF(sin(angle + M_PI / 3) * arrowSize,
-                                        cos(angle + M_PI / 3) * arrowSize);
-        QPointF arrowP2 = line().p1() + QPointF(sin(angle + M_PI - M_PI / 3) * arrowSize,
-                                        cos(angle + M_PI - M_PI / 3) * arrowSize);
-
-        arrowHead.clear();
-        arrowHead << line().p1() << arrowP1 << arrowP2;
-
-        //painter->drawPolygon(arrowHead);
-    */
 
     painter->drawLine( line() );
     if ( isSelected() )

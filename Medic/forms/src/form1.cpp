@@ -87,6 +87,9 @@ void Form1::on_pushButton_clicked()
 
 void Form1::on_toolButton_clicked()
 {
+    getCurrentScene()->SetState( MyScene::Circle );
+    getCurrentScene()->setColorArrow( 0xf2ff66 );
+    getCurrentScene()->setSpinBox( ui->doubleSpinBox );
 }
 
 void Form1::on_toolButton_2_clicked()

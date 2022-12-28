@@ -1,6 +1,7 @@
 #include "myscene.h"
 #include "arrow.h"
 #include <QDebug>
+#include <QGraphicsEllipseItem>
 #include <QGraphicsSceneMouseEvent>
 #include <QtMath>
 
@@ -8,6 +9,7 @@ MyScene::MyScene( QObject* parent )
     : QGraphicsScene( parent )
 {
     line = 0;
+    circle = 0;
     setSceneRect( 0, 0, 5000, 5000 );
 }
 
@@ -70,9 +72,10 @@ MyGraphicsItem* MyScene::CreatePoint()
     return item;
 }
 
-Arrow* MyScene::CreateArrow( MyGraphicsItem* startItem, MyGraphicsItem* endItem )
+Arrow* MyScene::CreateArrow( MyGraphicsItem* startItem, MyGraphicsItem* endItem, Arrow::TypeArrow type_arrow )
 {
     Arrow* arrow = new Arrow( startItem, endItem, ratio );
+    arrow->setTypeArrow( type_arrow );
     arrow->setColor( color_arrow );
     if ( spin_box != nullptr )
     {
@@ -89,6 +92,7 @@ Arrow* MyScene::CreateArrow( MyGraphicsItem* startItem, MyGraphicsItem* endItem 
 void MyScene::mousePressEvent( QGraphicsSceneMouseEvent* mouseEvent )
 {
     MyGraphicsItem* item;
+    int radius;
     switch ( state )
     {
     case None:
@@ -129,10 +133,29 @@ void MyScene::mousePressEvent( QGraphicsSceneMouseEvent* mouseEvent )
         removeItem( line );
         delete line;
 
-        CreateArrow( last_item, item );
+        CreateArrow( last_item, item, Arrow::Angle );
         last_item = item;
         state = None;
         break;
+    case Circle:
+        item = CreatePoint();
+        item->setPos( mouseEvent->scenePos() );
+        addItem( item );
+        last_item = item;
+
+        line = new QGraphicsLineItem( QLineF( mouseEvent->scenePos(),
+            mouseEvent->scenePos() ) );
+        line->setPen( QPen( color_arrow, 3 ) );
+        addItem( line );
+        radius = qSqrt( qPow( item->pos().x() - mouseEvent->scenePos().x(), 2 ) + qPow( item->pos().y() - mouseEvent->scenePos().y(), 2 ) );
+
+        circle
+            = new QGraphicsEllipseItem( mouseEvent->scenePos().x() - radius,
+                mouseEvent->scenePos().y() - radius,
+                radius,
+                radius );
+        addItem( circle );
+        state = CircleStart;
     default:
         break;
     };
@@ -141,11 +164,20 @@ void MyScene::mousePressEvent( QGraphicsSceneMouseEvent* mouseEvent )
 
 void MyScene::mouseMoveEvent( QGraphicsSceneMouseEvent* mouseEvent )
 {
-    if ( ( LineStart == state || AngleStart == state || AngleMiddle == state )
+    if ( ( LineStart == state || AngleStart == state || AngleMiddle == state || CircleStart == state )
         && line != 0 )
     {
         QLineF newLine( line->line().p1(), mouseEvent->scenePos() );
         line->setLine( newLine );
+        if ( CircleStart == state )
+        {
+            int radius = qSqrt( qPow( line->line().p1().x() - mouseEvent->scenePos().x(), 2 ) + qPow( line->line().p1().y() - mouseEvent->scenePos().y(), 2 ) );
+
+            circle->setRect( line->line().p1().x() - radius,
+                line->line().p1().y() - radius,
+                2 * radius,
+                2 * radius );
+        }
     }
     else if ( None == state && this->selectedItems().size() && MyGraphicsItem::Type == this->selectedItems()[0]->type() )
     {
@@ -155,7 +187,7 @@ void MyScene::mouseMoveEvent( QGraphicsSceneMouseEvent* mouseEvent )
 
 void MyScene::mouseReleaseEvent( QGraphicsSceneMouseEvent* mouseEvent )
 {
-    if ( ( LineStart == state || AngleStart == state || AngleMiddle == state )
+    if ( ( LineStart == state || AngleStart == state || AngleMiddle == state || CircleStart == state )
         && line != 0 )
     {
         MyGraphicsItem* item = CreatePoint();
@@ -164,11 +196,32 @@ void MyScene::mouseReleaseEvent( QGraphicsSceneMouseEvent* mouseEvent )
 
         removeItem( line );
         delete line;
+        if ( CircleStart == state )
+        {
+            removeItem( circle );
+            delete circle;
+        }
 
         MyGraphicsItem* startItem = last_item;
         MyGraphicsItem* endItem = item;
         last_item = item;
-        CreateArrow( startItem, endItem );
+
+        switch ( state )
+        {
+        case LineStart:
+            CreateArrow( startItem, endItem, Arrow::Line );
+            break;
+        case AngleStart:
+        case AngleMiddle:
+            CreateArrow( startItem, endItem, Arrow::Angle );
+            break;
+        case CircleStart:
+            CreateArrow( startItem, endItem, Arrow::Circle );
+            break;
+        default:
+            break;
+        }
+
         if ( AngleStart == state )
         {
             line = new QGraphicsLineItem( QLineF( mouseEvent->scenePos(),
@@ -181,6 +234,7 @@ void MyScene::mouseReleaseEvent( QGraphicsSceneMouseEvent* mouseEvent )
         else
         {
             line = 0;
+            circle = 0;
             state = None;
         }
     }
