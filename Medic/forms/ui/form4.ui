@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1045</width>
-    <height>548</height>
+    <height>554</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -117,6 +117,12 @@ color: rgb(170, 0, 0);</string>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
         </property>
+        <property name="minimum">
+         <double>-10000.000000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>10000.989999999999782</double>
+        </property>
         <property name="singleStep">
          <double>0.100000000000000</double>
         </property>
@@ -154,6 +160,12 @@ color: rgb(170, 0, 0);</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
+        </property>
+        <property name="minimum">
+         <double>-10000.000000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>10000.989999999999782</double>
         </property>
         <property name="singleStep">
          <double>0.100000000000000</double>
@@ -314,6 +326,12 @@ color: rgb(170, 0, 0);</string>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
         </property>
+        <property name="minimum">
+         <double>-10000.000000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>10000.989999999999782</double>
+        </property>
         <property name="singleStep">
          <double>0.100000000000000</double>
         </property>
@@ -354,6 +372,12 @@ color: rgb(170, 0, 0);</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
+        </property>
+        <property name="minimum">
+         <double>-10000.000000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>10000.989999999999782</double>
         </property>
         <property name="singleStep">
          <double>0.100000000000000</double>
