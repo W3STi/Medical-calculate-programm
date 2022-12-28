@@ -40,15 +40,15 @@ void Form1::on_pushButton_3_clicked()
 
 void Form1::on_pushButton_4_clicked()
 {
-    if (ui->doubleSpinBox_3->value() < 0.6 || ui->doubleSpinBox_3->value() > 1.0)
+    /*if (ui->doubleSpinBox_3->value() < 0.6 || ui->doubleSpinBox_3->value() > 1.0)
     {
         QMessageBox::critical(this, "Предупреждение", "Индекс сферичности головки ISh выходит за пределы требуемого диапазона. Применение программы невозможно");
         emit signal(false);
     }
     else
-    {
-        emit signal(true);
-    }
+    {*/
+    emit signal(true);
+    //}
     emit signal2(ui->doubleSpinBox_3->value(), diametr);
 }
 
@@ -87,9 +87,9 @@ void Form1::on_pushButton_clicked()
 
 void Form1::on_toolButton_clicked()
 {
-    getCurrentScene()->SetState( MyScene::Circle );
-    getCurrentScene()->setColorArrow( 0xf2ff66 );
-    getCurrentScene()->setSpinBox( ui->doubleSpinBox );
+    getCurrentScene()->SetState(MyScene::Circle);
+    getCurrentScene()->setColorArrow(0xf2ff66);
+    getCurrentScene()->setSpinBox(ui->doubleSpinBox);
 }
 
 void Form1::on_toolButton_2_clicked()

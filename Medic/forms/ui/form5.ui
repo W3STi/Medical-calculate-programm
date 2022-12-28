@@ -29,6 +29,7 @@
       <font>
        <family>Verdana</family>
        <pointsize>11</pointsize>
+       <weight>75</weight>
        <italic>false</italic>
        <bold>true</bold>
       </font>
@@ -86,6 +87,7 @@ font-weight: bold;</string>
       <font>
        <family>Verdana</family>
        <pointsize>10</pointsize>
+       <weight>9</weight>
        <italic>false</italic>
        <bold>false</bold>
       </font>
@@ -288,7 +290,7 @@ color: rgb(170, 0, 0);</string>
          </font>
         </property>
         <property name="text">
-         <string>град</string>
+         <string>°</string>
         </property>
        </widget>
       </item>

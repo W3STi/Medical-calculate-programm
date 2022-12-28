@@ -17,6 +17,36 @@
    <string notr="true"/>
   </property>
   <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="2">
+    <widget class="QPushButton" name="pushButton_5">
+     <property name="maximumSize">
+      <size>
+       <width>100</width>
+       <height>50</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <family>Verdana</family>
+       <pointsize>10</pointsize>
+       <weight>9</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: #fcebeb;
+font: 75 10pt &quot;Verdana&quot;;
+color: rgb(170, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string>Выход</string>
+     </property>
+    </widget>
+   </item>
    <item row="0" column="0" colspan="2">
     <widget class="QLabel" name="label_12">
      <property name="minimumSize">
@@ -29,6 +59,7 @@
       <font>
        <family>Verdana</family>
        <pointsize>11</pointsize>
+       <weight>75</weight>
        <italic>false</italic>
        <bold>true</bold>
       </font>
@@ -40,6 +71,38 @@ font-weight: bold;</string>
      <property name="text">
       <string>Загрузка рентгенограммы №2  и определение степени латерального наклона</string>
      </property>
+    </widget>
+   </item>
+   <item row="1" column="1" colspan="2">
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="minimumSize">
+      <size>
+       <width>500</width>
+       <height>500</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <family>Verdana</family>
+       <pointsize>9</pointsize>
+      </font>
+     </property>
+     <property name="tabShape">
+      <enum>QTabWidget::Triangular</enum>
+     </property>
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tab">
+      <attribute name="title">
+       <string>Рентгенограмма 2</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="tab_2">
+      <attribute name="title">
+       <string>Шпаргалка 8</string>
+      </attribute>
+     </widget>
     </widget>
    </item>
    <item row="1" column="0">
@@ -83,7 +146,7 @@ font-weight: bold;</string>
        </widget>
       </item>
       <item row="10" column="2">
-       <widget class="QLabel" name="label_10">
+       <widget class="QLabel" name="label_14">
         <property name="font">
          <font>
           <family>Verdana</family>
@@ -96,13 +159,13 @@ font-weight: bold;</string>
         <property name="alignment">
          <set>Qt::AlignCenter</set>
         </property>
-        <property name="minimum">
+        <property name="minimum" stdset="0">
          <double>-10000.000000000000000</double>
         </property>
-        <property name="maximum">
+        <property name="maximum" stdset="0">
          <double>10000.989999999999782</double>
         </property>
-        <property name="singleStep">
+        <property name="singleStep" stdset="0">
          <double>0.100000000000000</double>
         </property>
        </widget>
@@ -156,6 +219,12 @@ font-weight: bold;</string>
       </item>
       <item row="6" column="4">
        <widget class="QLabel" name="label_8">
+        <property name="maximumSize">
+         <size>
+          <width>10</width>
+          <height>10</height>
+         </size>
+        </property>
         <property name="font">
          <font>
           <family>Verdana</family>
@@ -163,12 +232,18 @@ font-weight: bold;</string>
          </font>
         </property>
         <property name="text">
-         <string>град</string>
+         <string>°</string>
         </property>
        </widget>
       </item>
       <item row="4" column="4">
        <widget class="QLabel" name="label_6">
+        <property name="maximumSize">
+         <size>
+          <width>10</width>
+          <height>10</height>
+         </size>
+        </property>
         <property name="font">
          <font>
           <family>Verdana</family>
@@ -176,12 +251,12 @@ font-weight: bold;</string>
          </font>
         </property>
         <property name="text">
-         <string>град</string>
+         <string>°</string>
         </property>
        </widget>
       </item>
       <item row="10" column="4">
-       <widget class="QLabel" name="label_13">
+       <widget class="QLabel" name="label_15">
         <property name="font">
          <font>
           <family>Verdana</family>
@@ -189,7 +264,7 @@ font-weight: bold;</string>
          </font>
         </property>
         <property name="text">
-         <string>град</string>
+         <string>°</string>
         </property>
        </widget>
       </item>
@@ -414,149 +489,6 @@ font-weight: bold;</string>
         </property>
        </widget>
       </item>
-      <item row="6" column="3">
-       <widget class="QDoubleSpinBox" name="doubleSpinBox_2">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Verdana</family>
-          <pointsize>9</pointsize>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background-color: #ff7a83;</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-        <property name="minimum">
-         <double>-10000.000000000000000</double>
-        </property>
-        <property name="maximum">
-         <double>10000.989999999999782</double>
-        </property>
-        <property name="singleStep">
-         <double>0.100000000000000</double>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="4">
-       <widget class="QLabel" name="label_6">
-        <property name="font">
-         <font>
-          <family>Verdana</family>
-          <pointsize>9</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>град</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="2">
-       <widget class="QLabel" name="label_5">
-        <property name="font">
-         <font>
-          <family>Verdana</family>
-          <pointsize>9</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>Г = </string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="10" column="2">
-       <widget class="QLabel" name="label_10">
-        <property name="font">
-         <font>
-          <family>Verdana</family>
-          <pointsize>9</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string> УОБ+(30-Г) = </string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="4">
-       <widget class="QLabel" name="label_8">
-        <property name="font">
-         <font>
-          <family>Verdana</family>
-          <pointsize>9</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>град</string>
-        </property>
-       </widget>
-      </item>
-      <item row="10" column="4">
-       <widget class="QLabel" name="label_13">
-        <property name="font">
-         <font>
-          <family>Verdana</family>
-          <pointsize>9</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>град</string>
-        </property>
-       </widget>
-      </item>
-      <item row="13" column="3">
-       <spacer name="verticalSpacer">
-        <property name="font">
-         <font>
-          <family>Verdana</family>
-          <pointsize>9</pointsize>
-         </font>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>40</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="0" column="3">
-       <widget class="QPushButton" name="pushButton_6">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Verdana</family>
-          <pointsize>9</pointsize>
-         </font>
-        </property>
-        <property name="cursor">
-         <cursorShape>PointingHandCursor</cursorShape>
-        </property>
-        <property name="text">
-         <string>Выберите файл</string>
-        </property>
-       </widget>
-      </item>
       <item row="6" column="0" colspan="2">
        <widget class="QLabel" name="label_4">
         <property name="font">
@@ -577,8 +509,14 @@ font-weight: bold;</string>
        <widget class="QToolButton" name="toolButton">
         <property name="minimumSize">
          <size>
-          <width>30</width>
-          <height>30</height>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
          </size>
         </property>
         <property name="text">
@@ -590,8 +528,14 @@ font-weight: bold;</string>
        <widget class="QToolButton" name="toolButton_2">
         <property name="minimumSize">
          <size>
-          <width>30</width>
-          <height>30</height>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
          </size>
         </property>
         <property name="text">
@@ -678,67 +622,6 @@ font-weight: bold;</string>
        </widget>
       </item>
      </layout>
-    </widget>
-   </item>
-   <item row="0" column="2">
-    <widget class="QPushButton" name="pushButton_5">
-     <property name="maximumSize">
-      <size>
-       <width>100</width>
-       <height>50</height>
-      </size>
-     </property>
-     <property name="font">
-      <font>
-       <family>Verdana</family>
-       <pointsize>10</pointsize>
-       <italic>false</italic>
-       <bold>false</bold>
-      </font>
-     </property>
-     <property name="cursor">
-      <cursorShape>PointingHandCursor</cursorShape>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: #fcebeb;
-font: 75 10pt &quot;Verdana&quot;;
-color: rgb(170, 0, 0);</string>
-     </property>
-     <property name="text">
-      <string>Выход</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1" colspan="2">
-    <widget class="QTabWidget" name="tabWidget">
-     <property name="minimumSize">
-      <size>
-       <width>500</width>
-       <height>500</height>
-      </size>
-     </property>
-     <property name="font">
-      <font>
-       <family>Verdana</family>
-       <pointsize>9</pointsize>
-      </font>
-     </property>
-     <property name="tabShape">
-      <enum>QTabWidget::Triangular</enum>
-     </property>
-     <property name="currentIndex">
-      <number>0</number>
-     </property>
-     <widget class="QWidget" name="tab">
-      <attribute name="title">
-       <string>Рентгенограмма 2</string>
-      </attribute>
-     </widget>
-     <widget class="QWidget" name="tab_2">
-      <attribute name="title">
-       <string>Шпаргалка 8</string>
-      </attribute>
-     </widget>
     </widget>
    </item>
   </layout>

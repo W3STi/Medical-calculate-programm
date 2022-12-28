@@ -29,6 +29,7 @@
       <font>
        <family>Verdana</family>
        <pointsize>11</pointsize>
+       <weight>75</weight>
        <italic>false</italic>
        <bold>true</bold>
       </font>
@@ -57,6 +58,7 @@ font-weight: bold;</string>
       <font>
        <family>Verdana</family>
        <pointsize>10</pointsize>
+       <weight>9</weight>
        <italic>false</italic>
        <bold>false</bold>
       </font>
@@ -316,31 +318,6 @@ color: rgb(170, 0, 0);
         </property>
        </widget>
       </item>
-      <item row="7" column="4">
-       <widget class="QDoubleSpinBox" name="doubleSpinBox_2">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Verdana</family>
-          <pointsize>9</pointsize>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background-color: #ff7a83;</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-        <property name="singleStep">
-         <double>0.100000000000000</double>
-        </property>
-       </widget>
-      </item>
       <item row="12" column="0" colspan="5">
        <widget class="Line" name="line_5">
         <property name="font">
@@ -493,31 +470,6 @@ color: rgb(170, 0, 0);
         </property>
         <property name="maximum">
          <double>10000.000000000000000</double>
-        </property>
-        <property name="singleStep">
-         <double>0.100000000000000</double>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="4">
-       <widget class="QDoubleSpinBox" name="doubleSpinBox">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Verdana</family>
-          <pointsize>9</pointsize>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background-color: #f2ff66;</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
         </property>
         <property name="singleStep">
          <double>0.100000000000000</double>

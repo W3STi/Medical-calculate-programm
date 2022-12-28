@@ -15,5 +15,5 @@ Conclusion::~Conclusion()
 
 void Conclusion::getCon(QString s)
 {
-    ui->label->setText("Вывод: " + s);
+    ui->textBrowser->setHtml("Вывод: " + s);
 }
