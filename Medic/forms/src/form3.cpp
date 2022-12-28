@@ -8,8 +8,8 @@ Form3::Form3( QWidget* parent )
 {
     ui->setupUi( this );
     ui->tabWidget->clear();
-    ui->tabWidget->addTab( new QGraphicsView( this ), tr( "Рентгенограмма 1" ) );
-    ui->tabWidget->addTab( new QGraphicsView( this ), tr( "Рентгенограмма 2" ) );
+    ui->tabWidget->addTab( new QGraphicsView( new MyScene(), this ), tr( "Рентгенограмма 1" ) );
+    ui->tabWidget->addTab( new QGraphicsView( new MyScene(), this ), tr( "Рентгенограмма 2" ) );
     QGraphicsDropShadowEffect* effect = new QGraphicsDropShadowEffect( this );
     effect->setBlurRadius( 20 );
     effect->setColor( Qt::white );

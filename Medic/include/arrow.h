@@ -55,7 +55,7 @@ private:
     QGraphicsProxyWidget* proxy_widget;
     QDoubleSpinBox* spin_box;
     TypeArrow type_arrow;
-    QGraphicsEllipseItem* circle;
+    QGraphicsEllipseItem* circle = 0;
 };
 
 #endif // ARROW_H
