@@ -44,6 +44,21 @@ void Form2::on_pushButton_3_clicked()
     ui->doubleSpinBox_3->setValue( indOkano );
 }
 
+MyScene* Form2::getCurrentScene()
+{
+    auto widget = ui->tabWidget->currentWidget();
+    if ( QString( widget->metaObject()->className() ) == "QGraphicsView" )
+    {
+        auto graphics_widget = static_cast<QGraphicsView*>( widget );
+        auto scene = graphics_widget->scene();
+        if ( QString( scene->metaObject()->className() ) == "MyScene" )
+        {
+            return static_cast<MyScene*>( scene );
+        }
+    }
+    return {};
+}
+
 void Form2::on_pushButton_4_clicked()
 {
     if ( indOkano < 0.43 || indOkano > 0.58 )
@@ -59,7 +74,14 @@ void Form2::on_pushButton_4_clicked()
 
 void Form2::on_toolButton_2_clicked()
 {
-    getCurrentScene()->SetState( MyScene::Circle );
+    getCurrentScene()->SetState( MyScene::Line );
     getCurrentScene()->setColorArrow( 0xff7a83 );
+    getCurrentScene()->setSpinBox( ui->doubleSpinBox_2 );
+}
+
+void Form2::on_toolButton_clicked()
+{
+    getCurrentScene()->SetState( MyScene::Line );
+    getCurrentScene()->setColorArrow( 0xf2ff66 );
     getCurrentScene()->setSpinBox( ui->doubleSpinBox );
 }

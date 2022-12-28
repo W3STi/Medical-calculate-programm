@@ -109,6 +109,8 @@ void Arrow::updatePosition()
     else
     {
         razmer = sqrt( pow( myEndItem->pos().x() - myStartItem->pos().x(), 2 ) + pow( myEndItem->pos().y() - myStartItem->pos().y(), 2 ) ) * scene_ratio;
+        if ( Circle == type_arrow )
+            razmer *= 2;
         label->setText( QString::number( razmer ) + "px" );
         spin_box->setValue( razmer );
     }
