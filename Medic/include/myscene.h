@@ -5,6 +5,7 @@
 #include <QDoubleSpinBox>
 #include <QGraphicsScene>
 #include <QLineEdit>
+#include <arrow.h>>
 
 class MyScene : public QGraphicsScene
 {
@@ -17,7 +18,9 @@ public:
         LineStart = 2,
         Angle = 3,
         AngleStart = 4,
-        AngleMiddle = 5
+        AngleMiddle = 5,
+        Circle = 6,
+        CircleStart = 7
     };
 
     explicit MyScene( QObject* parent = 0 );
@@ -31,7 +34,7 @@ public:
     double GetRatio();
     State GetState();
     MyGraphicsItem* CreatePoint();
-    Arrow* CreateArrow( MyGraphicsItem*, MyGraphicsItem* );
+    Arrow* CreateArrow( MyGraphicsItem*, MyGraphicsItem*, Arrow::TypeArrow );
 
 protected:
     void mousePressEvent( QGraphicsSceneMouseEvent* mouseEvent ) override;
@@ -40,22 +43,8 @@ protected:
     void mouseDoubleClickEvent( QGraphicsSceneMouseEvent* mouseEvent ) override;
 
 private:
-    class Measurement
-    {
-    public:
-        enum Type
-        {
-            Line,
-            Angle,
-            Cycle
-        };
-
-        Type type;
-        QVector<MyGraphicsItem> points;
-        QLineEdit* lineedit;
-    };
-
     QGraphicsLineItem* line;
+    QGraphicsEllipseItem* circle;
     MyGraphicsItem* last_item;
     QPixmap pixmap;
     double ratio = 1.0; ///< mm / pix

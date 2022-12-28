@@ -20,6 +20,13 @@ QT_END_NAMESPACE
 class Arrow : public QGraphicsLineItem
 {
 public:
+    enum TypeArrow
+    {
+        Line,
+        Angle,
+        Circle
+    };
+
     Arrow( MyGraphicsItem* startItem, MyGraphicsItem* endItem, double ratio = 0.0,
         QGraphicsItem* parent = 0 );
 
@@ -27,10 +34,11 @@ public:
     QRectF boundingRect() const override;
     // QPainterPath shape() const override;
     void setColor( const QColor& color ) { myColor = color; }
+    void setTypeArrow( TypeArrow new_type_arrow ) { type_arrow = new_type_arrow; }
     void setSpinBox( QDoubleSpinBox* );
     MyGraphicsItem* startItem() const { return myStartItem; }
     MyGraphicsItem* endItem() const { return myEndItem; }
-
+    static double getAngleABC( QPointF point_a, QPointF point_b, QPointF point_c );
     void updatePosition();
 
 protected:
@@ -46,6 +54,8 @@ private:
     double razmer = 0;
     QGraphicsProxyWidget* proxy_widget;
     QDoubleSpinBox* spin_box;
+    TypeArrow type_arrow;
+    QGraphicsEllipseItem* circle;
 };
 
 #endif // ARROW_H
