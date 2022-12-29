@@ -71,3 +71,8 @@ void Form3::on_toolButton_2_clicked()
     getCurrentScene()->setColorArrow( 0xff7a83 );
     getCurrentScene()->setSpinBox( ui->doubleSpinBox_2 );
 }
+
+void Form3::on_pushButton_clicked()
+{
+    getCurrentScene()->clear();
+}

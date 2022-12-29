@@ -58,3 +58,8 @@ void Form5::on_toolButton_clicked()
     getCurrentScene()->setColorArrow( 0xf2ff66 );
     getCurrentScene()->setSpinBox( ui->doubleSpinBox );
 }
+
+void Form5::on_pushButton_clicked()
+{
+    getCurrentScene()->clear();
+}

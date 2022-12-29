@@ -43,6 +43,8 @@ private slots:
 
     void on_toolButton_2_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::Form6* ui;
 };

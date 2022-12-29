@@ -8,19 +8,19 @@
 #include <QMessageBox>
 #include <QString>
 
-Form1::Form1(QWidget* parent)
-    : QWidget(parent)
-    , ui(new Ui::Form1)
+Form1::Form1( QWidget* parent )
+    : QWidget( parent )
+    , ui( new Ui::Form1 )
 {
-    ui->setupUi(this);
+    ui->setupUi( this );
     ui->tabWidget->clear();
-    ui->tabWidget->addTab(new QGraphicsView(new MyScene(), this), tr("Рентгенограмма 1"));
-    ui->tabWidget->addTab(new QGraphicsView(new MyScene(), this), tr("Рентгенограмма 2"));
-    QGraphicsDropShadowEffect* effect = new QGraphicsDropShadowEffect(this);
-    effect->setBlurRadius(20);
-    effect->setColor(Qt::white);
-    effect->setOffset(QPointF(0, 0));
-    ui->label_12->setGraphicsEffect(effect);
+    ui->tabWidget->addTab( new QGraphicsView( new MyScene(), this ), tr( "Рентгенограмма 1" ) );
+    ui->tabWidget->addTab( new QGraphicsView( new MyScene(), this ), tr( "Рентгенограмма 2" ) );
+    QGraphicsDropShadowEffect* effect = new QGraphicsDropShadowEffect( this );
+    effect->setBlurRadius( 20 );
+    effect->setColor( Qt::white );
+    effect->setOffset( QPointF( 0, 0 ) );
+    ui->label_12->setGraphicsEffect( effect );
 }
 
 Form1::~Form1()
@@ -30,12 +30,12 @@ Form1::~Form1()
 
 void Form1::on_pushButton_5_clicked()
 {
-    qApp->exit(0);
+    qApp->exit( 0 );
 }
 
 void Form1::on_pushButton_3_clicked()
 {
-    ui->doubleSpinBox_3->setValue(diametr / distance * 0.5);
+    ui->doubleSpinBox_3->setValue( diametr / distance * 0.5 );
 }
 
 void Form1::on_pushButton_4_clicked()
@@ -47,17 +47,17 @@ void Form1::on_pushButton_4_clicked()
     }
     else
     {*/
-    emit signal(true);
+    emit signal( true );
     //}
-    emit signal2(ui->doubleSpinBox_3->value(), diametr);
+    emit signal2( ui->doubleSpinBox_3->value(), diametr );
 }
 
-void Form1::on_doubleSpinBox_valueChanged(double arg1)
+void Form1::on_doubleSpinBox_valueChanged( double arg1 )
 {
     diametr = arg1;
 }
 
-void Form1::on_doubleSpinBox_2_valueChanged(double arg1)
+void Form1::on_doubleSpinBox_2_valueChanged( double arg1 )
 {
     distance = arg1;
 }
@@ -65,13 +65,13 @@ void Form1::on_doubleSpinBox_2_valueChanged(double arg1)
 MyScene* Form1::getCurrentScene()
 {
     auto widget = ui->tabWidget->currentWidget();
-    if (QString(widget->metaObject()->className()) == "QGraphicsView")
+    if ( QString( widget->metaObject()->className() ) == "QGraphicsView" )
     {
-        auto graphics_widget = static_cast<QGraphicsView*>(widget);
+        auto graphics_widget = static_cast<QGraphicsView*>( widget );
         auto scene = graphics_widget->scene();
-        if (QString(scene->metaObject()->className()) == "MyScene")
+        if ( QString( scene->metaObject()->className() ) == "MyScene" )
         {
-            return static_cast<MyScene*>(scene);
+            return static_cast<MyScene*>( scene );
         }
     }
     qDebug() << "Form1 Scene nullptr";
@@ -80,21 +80,26 @@ MyScene* Form1::getCurrentScene()
 
 void Form1::on_pushButton_clicked()
 {
-    QString path = QFileDialog::getOpenFileName(this, "Choose Config", QDir::currentPath(), tr("Png (*.png);;Jpg (*.jpg,*.jpeg);;All files (*)"));
-    QPixmap pixmap(path);
-    getCurrentScene()->SetPixmap(pixmap);
+    QString path = QFileDialog::getOpenFileName( this, "Choose Config", QDir::currentPath(), tr( "Png (*.png);;Jpg (*.jpg,*.jpeg);;All files (*)" ) );
+    QPixmap pixmap( path );
+    getCurrentScene()->SetPixmap( pixmap );
 }
 
 void Form1::on_toolButton_clicked()
 {
-    getCurrentScene()->SetState(MyScene::Circle);
-    getCurrentScene()->setColorArrow(0xf2ff66);
-    getCurrentScene()->setSpinBox(ui->doubleSpinBox);
+    getCurrentScene()->SetState( MyScene::Circle );
+    getCurrentScene()->setColorArrow( 0xf2ff66 );
+    getCurrentScene()->setSpinBox( ui->doubleSpinBox );
 }
 
 void Form1::on_toolButton_2_clicked()
 {
-    getCurrentScene()->SetState(MyScene::Line);
-    getCurrentScene()->setColorArrow(0xff7a83);
-    getCurrentScene()->setSpinBox(ui->doubleSpinBox_2);
+    getCurrentScene()->SetState( MyScene::Line );
+    getCurrentScene()->setColorArrow( 0xff7a83 );
+    getCurrentScene()->setSpinBox( ui->doubleSpinBox_2 );
+}
+
+void Form1::on_pushButton_6_clicked()
+{
+    getCurrentScene()->clear();
 }
