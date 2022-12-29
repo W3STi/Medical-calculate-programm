@@ -29,6 +29,7 @@
       <font>
        <family>Verdana</family>
        <pointsize>11</pointsize>
+       <weight>75</weight>
        <italic>false</italic>
        <bold>true</bold>
       </font>
@@ -54,6 +55,7 @@ font-weight: bold;</string>
       <font>
        <family>Verdana</family>
        <pointsize>10</pointsize>
+       <weight>9</weight>
        <italic>false</italic>
        <bold>false</bold>
       </font>
@@ -149,6 +151,9 @@ color: rgb(170, 0, 0);</string>
         </property>
         <property name="text">
          <string>     R =</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>
@@ -262,6 +267,9 @@ color: rgb(170, 0, 0);</string>
         <property name="text">
          <string>ICAS =</string>
         </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
        </widget>
       </item>
       <item row="7" column="0" colspan="4">
@@ -300,6 +308,9 @@ color: rgb(170, 0, 0);</string>
         </property>
         <property name="text">
          <string>  ISA =</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>
@@ -416,6 +427,9 @@ color: rgb(170, 0, 0);</string>
         </property>
         <property name="text">
          <string>   DA = </string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
         </property>
        </widget>
       </item>
@@ -572,6 +586,9 @@ color: rgb(170, 0, 0);</string>
           <width>110</width>
           <height>16777215</height>
          </size>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
         </property>
         <property name="layoutDirection">
          <enum>Qt::LeftToRight</enum>
