@@ -16,7 +16,6 @@ void MainWindow::setStandValues()
     aK = 0.0;
     lN = 0.0;
     pN = 0.0;
-    conc = "";
 }
 
 MainWindow::MainWindow(QWidget* parent)
@@ -28,21 +27,22 @@ MainWindow::MainWindow(QWidget* parent)
 
     createForm();
 
-    connect( hForm, &HelloForm::signal, this, &MainWindow::set1Win );
-    connect( form1, &Form1::signal, this, &MainWindow::set2Win );
-    connect( form2, &Form2::signal, this, &MainWindow::set3Win );
-    connect( form3, &Form3::signal, this, &MainWindow::set4Win );
-    connect( form4, &Form4::signal, this, &MainWindow::set5Win );
-    connect( form5, &Form5::signal, this, &MainWindow::set6Win );
-    connect( form6, &Form6::signal, this, &MainWindow::setLastWin );
+    connect(hForm, &HelloForm::signal, this, &MainWindow::set1Win);
+    connect(form1, &Form1::signal, this, &MainWindow::set2Win);
+    connect(form2, &Form2::signal, this, &MainWindow::set3Win);
+    connect(form3, &Form3::signal, this, &MainWindow::set4Win);
+    connect(form4, &Form4::signal, this, &MainWindow::set5Win);
+    connect(form5, &Form5::signal, this, &MainWindow::set6Win);
+    connect(form6, &Form6::signal, this, &MainWindow::setLastWin);
 
-    connect( form1, &Form1::signal2, this, &MainWindow::getIndSphere );
-    connect( form3, &Form3::signal2, this, &MainWindow::getAngleAB );
-    connect( this, &MainWindow::signal, form4, &Form4::getParam );
-    connect( form4, &Form4::signal2, this, &MainWindow::getICASandISA );
-    connect( form5, &Form5::signal2, this, &MainWindow::getAngleC );
-    connect( form6, &Form6::signal2, this, &MainWindow::getAK );
-    connect( form7, &Form7::signal, this, &MainWindow::getlN );
+    connect(form1, &Form1::signal2, this, &MainWindow::getIndSphere);
+    connect(form3, &Form3::signal2, this, &MainWindow::getAngleAB);
+    connect(this, &MainWindow::signal, form4, &Form4::getParam);
+    connect(form4, &Form4::signal2, this, &MainWindow::getICASandISA);
+    connect(form5, &Form5::signal2, this, &MainWindow::getAngleC);
+    connect(form6, &Form6::signal2, this, &MainWindow::getAK);
+    connect(form7, &Form7::signal, this, &MainWindow::getlN);
+    connect(con, &Conclusion::signal, this, &MainWindow::setHello);
 
     connect(form8, &Form8::signal, this, &MainWindow::checkParams);
     connect(this, &MainWindow::signal2, con, &Conclusion::getCon);
@@ -119,53 +119,54 @@ void MainWindow::setLastWin()
 {
     form6->hide();
 
-    if ( ( ICAS > 1.7 && angleA <= 35 ) || ( ICAS >= 1.0 && ICAS <= 1.7 ) )
+    if ((ICAS > 1.7 && angleA <= 35) || (ICAS >= 1.0 && ICAS <= 1.7))
     {
         form7->show();
-        setCentralWidget( form7 );
+        setCentralWidget(form7);
     }
     else
     {
         form8->show();
-        setCentralWidget( form8 );
+        setCentralWidget(form8);
     }
 }
 
-void MainWindow::checkParams( double p )
+void MainWindow::checkParams(double p)
 {
     pN = p;
     form8->hide();
+    QString conc = "";
 
-    if ( ICAS > 1.7 )
+    if (ICAS > 1.7)
     {
         if (angleA > 35.0)
         {
             if (angleC > 20.0)
             {
-                conc = "Ацетабулярный коэффициент≥150.\n Показана остеотомия таза+неполная периацетабулярная остеотомия\n За счет остеотомии таза осуществляется наклон в сагиттальной и горизонтальной плоскости\n Степень переднего наклона фрагмента равна: " + QString::number(pN) + "\n Горизонтальная плоскость.\n Наружная ротация ацетабулярного фрагмента: В - 20°= " + QString::number(angleC - 20.0) + "\n За счет неполной ПАО осуществляется латеральный наклон\n Степень латерального наклона соответствует углу наклона опорной поверхности Б = " + QString::number(angleB);
+                conc = conc1;
             }
             else if (angleC >= 10.0 && angleC <= 20.0)
             {
-                conc = "Ацетабулярный коэффициент≥150.\n Показана неполная периацетабулярная остеотомия (ПАО)\n Степень латерального наклона соответствует углу наклона опорной поверхности Б = " + QString::number(angleB) + "\n Степень переднего наклона фрагмента равна: " + QString::number(pN);
+                conc = conc2;
             }
             else if (angleC < 10.0)
             {
-                conc = "Ацетабулярный коэффициент≥150.\n Показана остеотомия таза+неполная периацетабулярная остеотомия\n За счет остеотомии таза осуществляется наклон в сагиттальной и горизонтальной плоскости\n Степень переднего наклона фрагмента равна: " + QString::number(pN) + "\n Горизонтальная плоскость.\n Наружная ротация ацетабулярного фрагмента: В - 20°= " + QString::number(15.0 - angleC) + "\n За счет неполной ПАО осуществляется латеральный наклон\n Степень латерального наклона соответствует углу наклона опорной поверхности Б = " + QString::number(angleB);
+                conc = conc3;
             }
         }
         else
         {
             if (angleC > 20.0)
             {
-                conc = "За счет остеотомии таза осуществляется наклон во фронтальной, сагиттальной и горизонтальной плоскости\n Во фронтальной плоскости (латеральный наклон)\n Степень латерального наклона ацетабулярного фрагмента равна: " + QString::number( lN ) + "\n В сагиттальной плоскости (передний наклон)\n Степень переднего наклона фрагмента равна: " + QString::number( pN ) + "\n Горизонтальная плоскость. Наружная ротация ацетабулярного фрагмента: В - 20° = " + QString::number( angleC - 20.0 ) + "За счет неполной ПАО осуществляется дополнительный латеральный наклон\n Степень дополнительного латерального наклона:  угол  наклона опорной поверхности Б – \n Угол наклона впадины после остеотомии таза-? = ";
+                conc = conc4;
             }
             else if (angleC >= 10.0 && angleC <= 20.0)
             {
-                conc = "За счет остеотомии таза осуществляется наклон во фронтальной и сагиттальной плоскости\n Во фронтальной плоскости (латеральный наклон)\n Степень латерального наклона ацетабулярного фрагмента равна: " + QString::number( lN ) + "\n В сагиттальной плоскости (передний наклон)\n Степень переднего наклона фрагмента равна: " + QString::number( pN ) + "\n За счет неполной ПАО осуществляется дополнительный латеральный наклон\n Степень дополнительного латерального наклона:  угол  наклона опорной поверхности Б – \n Угол наклона впадины после остеотомии таза-? = ";
+                conc = conc5;
             }
             else if (angleC < 10.0)
             {
-                conc = "За счет остеотомии таза осуществляется наклон во фронтальной, сагиттальной и горизонтальной плоскости\n Во фронтальной плоскости (латеральный наклон)\n Степень латерального наклона ацетабулярного фрагмента равна: " + QString::number( lN ) + "\n В сагиттальной плоскости (передний наклон)\n Степень переднего наклона фрагмента равна: " + QString::number( pN ) + "\n Горизонтальная плоскость. Наружная ротация ацетабулярного фрагмента: В - 20° = " + QString::number( 15.0 - angleC ) + "За счет неполной ПАО осуществляется дополнительный латеральный наклон\n Степень дополнительного латерального наклона:  угол  наклона опорной поверхности Б – \n Угол наклона впадины после остеотомии таза-? = ";
+                conc = conc6;
             }
         }
     }
@@ -175,47 +176,47 @@ void MainWindow::checkParams( double p )
         {
             if (angleC > 20.0)
             {
-                conc = "Ацетабулярный коэффициент≥150.\n Показана остеотомия таза.\n Степень латерального наклона ацетабулярного фрагмента равна: " + QString::number(lN) + "\n Степень переднего наклона равна: " + QString::number(pN) + "\n Наружная ротация ацетабулярного фрагмента:  равна" + QString::number(angleC - 20.0);
+                conc = conc7;
             }
             else if (angleC >= 10.0 && angleC <= 20.0)
             {
-                conc = "Ацетабулярный коэффициент≥150.\n Показана остеотомия таза.\n Степень латерального наклона ацетабулярного фрагмента равна: " + QString::number(lN) + "\n Степень переднего наклона равна: " + QString::number(pN);
+                conc = conc8;
             }
             else if (angleC < 10.0)
             {
-                conc = "Ацетабулярный коэффициент≥150.\n Показана остеотомия таза.\n Степень латерального наклона ацетабулярного фрагмента равна: " + QString::number(lN) + "\n Степень переднего наклона равна: " + QString::number(pN) + "\n Наружная ротация ацетабулярного фрагмента:  равна" + QString::number(15.0 - angleC);
+                conc = conc9;
             }
         }
         else
         {
-            QMessageBox::critical( this, "Предупреждение", "Угол наклона опорной поверхности Б менее 15 градусов. Применение программы невозможно" );
-            qApp->exit( 0 );
+            QMessageBox::critical(this, "Предупреждение", "Угол наклона опорной поверхности Б менее 15 градусов. Применение программы невозможно");
+            qApp->exit(0);
         }
     }
     else if (ICAS >= 0.88 && ICAS <= 0.99)
     {
         if (angleC > 20.0)
         {
-            conc = "За счет остеотомии таза осуществляется наклон во фронтальной, сагиттальной и горизонтальной плоскости.\n Во фронтальной плоскости (латеральный наклон):\n Степень латерального наклона ацетабулярного фрагмента соответствует величине угла наклона опорной поверхности Б = " + QString::number( angleB ) + "\n В сагиттальной плоскости (передний наклон): \n Степень переднего наклона фрагмента равна: " + QString::number( pN ) + "\n  Горизонтальная плоскость.\n Наружная ротация ацетабулярного фрагмента:  В - 20° = " + QString::number( angleC - 20.0 ) + "\nЗа счет ацетабулопластики осуществляется дополнительное  латеральное покрытие наклон.\n Величина трансплантата:  ";
+            conc = conc10;
         }
         else if (angleC >= 10.0 && angleC <= 20.0)
         {
-            conc = "За счет остеотомии таза осуществляется наклон во фронтальной и сагиттальной плоскости.\n Во фронтальной плоскости (латеральный наклон):\n Степень латерального наклона ацетабулярного фрагмента соответствует величине угла наклона опорной поверхности Б = " + QString::number( angleB ) + "\n В сагиттальной плоскости (передний наклон): \n Степень переднего наклона фрагмента равна: " + QString::number( pN ) + "\n За счет ацетабулопластики осуществляется дополнительное латеральное покрытие наклон.\n Величина трансплантата: ";
+            conc = conc11;
         }
         else if (angleC < 10.0)
         {
-            conc = "За счет остеотомии таза осуществляется наклон во фронтальной, сагиттальной и горизонтальной плоскости.\n Во фронтальной плоскости (латеральный наклон):\n Степень латерального наклона ацетабулярного фрагмента соответствует величине угла наклона опорной поверхности Б = " + QString::number( angleB ) + "\n В сагиттальной плоскости (передний наклон): \n Степень переднего наклона фрагмента равна: " + QString::number( pN ) + "\n  Горизонтальная плоскость.\n Наружная ротация ацетабулярного фрагмента:  В - 20° = " + QString::number( 15.0 - angleC ) + "\nЗа счет ацетабулопластики осуществляется дополнительное  латеральное покрытие наклон.\n Величина трансплантата:  ";
+            conc = conc12;
         }
     }
     else
     {
-        QMessageBox::critical( this, "Предупреждение", "Индекс конгруэнтности ICAS менее 0.8. Применение программы невозможно" );
-        qApp->exit( 0 );
+        QMessageBox::critical(this, "Предупреждение", "Индекс конгруэнтности ICAS менее 0.8. Применение программы невозможно");
+        qApp->exit(0);
     }
 
     emit signal2(conc);
-    con->show();
     setCentralWidget(con);
+    con->show();
 }
 
 void MainWindow::getIndSphere(double p, double p2)
@@ -247,18 +248,26 @@ void MainWindow::getAK(double p)
     aK = p;
 }
 
-void MainWindow::getlN( double p )
+void MainWindow::getlN(double p)
 {
     lN = p;
 
     form7->hide();
     form8->show();
-    setCentralWidget( form8 );
+    setCentralWidget(form8);
+}
+
+void MainWindow::setHello()
+{
+    con->hide();
+    hForm->show();
+    setCentralWidget(hForm);
 }
 
 void MainWindow::createForm()
 {
     MainWindow::hForm = new HelloForm(this);
+    setCentralWidget(hForm);
     MainWindow::form1 = new Form1(this);
     form1->hide();
     MainWindow::form2 = new Form2(this);

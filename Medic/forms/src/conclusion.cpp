@@ -17,3 +17,13 @@ void Conclusion::getCon(QString s)
 {
     ui->textBrowser->setHtml("Вывод: " + s);
 }
+
+void Conclusion::on_pushButton_clicked()
+{
+    emit signal();
+}
+
+void Conclusion::on_pushButton_2_clicked()
+{
+    qApp->exit(0);
+}

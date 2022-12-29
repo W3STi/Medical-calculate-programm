@@ -20,6 +20,14 @@ public:
 public slots:
     void getCon(QString s);
 
+private slots:
+    void on_pushButton_clicked();
+
+    void on_pushButton_2_clicked();
+
+signals:
+    void signal();
+
 private:
     Ui::Conclusion* ui;
 };

@@ -61,10 +61,10 @@ MyScene* Form2::getCurrentScene()
 
 void Form2::on_pushButton_4_clicked()
 {
-    /*if ( indOkano < 0.43 || indOkano > 0.58 )
+    /*if (ui->doubleSpinBox_3->value() < 0.43 || ui->doubleSpinBox_3->value() > 0.58)
     {
-        QMessageBox::critical( this, "Предупреждение", "Индекс Окано выходит за пределы требуемого диапазона. Применение программы невозможно" );
-        emit signal( false );
+        QMessageBox::critical(this, "Предупреждение", "Индекс Окано выходит за пределы требуемого диапазона. Применение программы невозможно");
+        emit signal(false);
     }
     else
     {*/
