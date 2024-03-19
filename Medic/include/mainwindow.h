@@ -1,7 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-//#include "conclusion.h"
+#include "conclusion.h"
 #include "form1.h"
 #include "form2.h"
 #include "form3.h"
@@ -36,22 +36,23 @@ public:
     Form6* form6;
     Form7* form7;
     Form8* form8;
-    //conclusion* con;
+    Conclusion* con;
 
-    double indSphere;
-    double angleA;
-    double angleB;
-    double ICAS;
-    double ISA;
-    double angleC;
-    double aK;
-    double lN;
-    double pN;
-    QString conc;
+    double indSphere = 0.0;
+    double Dh = 0.0;
+    double angleA = 0.0;
+    double angleB = 0.0;
+    double ICAS = 0.0;
+    double ISA = 0.0;
+    double angleC = 0.0;
+    double aK = 0.0;
+    double lN = 0.0;
+    double pN = 0.0;
+    QString conc = "";
 
-    // QVector<QWidget*> formList;
+    void setStandValues();
 
-    MainWindow( QWidget* parent = nullptr );
+    MainWindow(QWidget* parent = nullptr);
     ~MainWindow();
 
 private slots:
@@ -59,14 +60,14 @@ private slots:
 
 public slots:
     void set1Win();
-    void set2Win( bool flag );
-    void set3Win( bool flag );
+    void set2Win(bool flag);
+    void set3Win(bool flag);
     void set4Win();
     void set5Win();
     void set6Win();
     void setLastWin();
     void checkParams(double p);
-    void getIndSphere(double p);
+    void getIndSphere(double p, double p2);
     void getAngleAB(double pA, double pB);
     void getICASandISA(double pIC, double pIS);
     void getAngleC(double p);
@@ -74,7 +75,8 @@ public slots:
     void getlN(double p);
 
 signals:
-    void signal( double p );
+    void signal(double p);
+    void signal2(QString s);
 
 private:
     Ui::MainWindow* ui;

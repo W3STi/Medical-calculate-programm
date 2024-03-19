@@ -37,6 +37,8 @@ private slots:
 
     void on_toolButton_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::Form8* ui;
 };

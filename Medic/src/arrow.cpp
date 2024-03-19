@@ -68,6 +68,7 @@ void Arrow::updatePosition()
     }
     if ( Angle == type_arrow )
     {
+        Arrow* arrow = 0;
         auto point_A = myStartItem;
         auto point_B = myEndItem;
         auto point_C = point_B;
@@ -84,7 +85,6 @@ void Arrow::updatePosition()
         }
         else
         {
-            Arrow* arrow;
             if ( arrow_mid[0] != this )
             {
                 arrow = arrow_mid[0];
@@ -103,7 +103,9 @@ void Arrow::updatePosition()
                 point_C = arrow->endItem();
             }
         }
-        spin_box->setValue( getAngleABC( point_A->pos(), point_B->pos(), point_C->pos() ) );
+        spin_box->setValue( qAbs( ( int )( getAngleABC( point_A->pos(), point_B->pos(), point_C->pos() ) ) % 180 ) );
+        if ( arrow != nullptr )
+            arrow->setValue( spin_box->value() );
         label->setText( QString::number( spin_box->value() ) + " °" );
     }
     else
@@ -114,6 +116,11 @@ void Arrow::updatePosition()
         label->setText( QString::number( razmer ) + "px" );
         spin_box->setValue( razmer );
     }
+}
+
+void Arrow::setValue( double value )
+{
+    label->setText( QString::number( value ) + " °" );
 }
 
 double Arrow::getAngleABC( QPointF point_a, QPointF point_b, QPointF point_c )

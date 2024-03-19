@@ -42,9 +42,11 @@ private slots:
 
     void on_toolButton_2_clicked();
 
+    void on_pushButton_6_clicked();
+
 signals:
     void signal( bool flag );
-    void signal2( double p );
+    void signal2( double p, double p2 );
 
 private:
     Ui::Form1* ui;

@@ -8,8 +8,8 @@ Form8::Form8( QWidget* parent )
 {
     ui->setupUi( this );
     ui->tabWidget->clear();
-    ui->tabWidget->addTab( new QGraphicsView( this ), tr( "Рентгенограмма 1" ) );
-    ui->tabWidget->addTab( new QGraphicsView( this ), tr( "Рентгенограмма 2" ) );
+    ui->tabWidget->addTab( new QGraphicsView( new MyScene(), this ), tr( "Рентгенограмма 1" ) );
+    ui->tabWidget->addTab( new QGraphicsView( new MyScene(), this ), tr( "Рентгенограмма 2" ) );
     QGraphicsDropShadowEffect* effect = new QGraphicsDropShadowEffect( this );
     effect->setBlurRadius( 20 );
     effect->setColor( Qt::white );
@@ -62,4 +62,9 @@ void Form8::on_toolButton_clicked()
     getCurrentScene()->SetState( MyScene::Angle );
     getCurrentScene()->setColorArrow( 0xf2ff66 );
     getCurrentScene()->setSpinBox( ui->doubleSpinBox );
+}
+
+void Form8::on_pushButton_clicked()
+{
+    getCurrentScene()->clear();
 }
