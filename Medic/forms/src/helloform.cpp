@@ -40,7 +40,7 @@ void HelloForm::on_pushButton_5_clicked()
 
 void HelloForm::on_pushButton_4_clicked()
 {
-    if (age <= 12)
+    if (ui->spinBox->value() <= 12)
     {
         QMessageBox::critical(this, "Предупреждение", "Программа для планирования операции данной возрастной группы в настоящий момент не подходит (планируется расширить далее для других возрастных групп)");
     }

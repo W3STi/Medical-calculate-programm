@@ -9,8 +9,8 @@ Form2::Form2( QWidget* parent )
 {
     ui->setupUi( this );
     ui->tabWidget->clear();
-    ui->tabWidget->addTab( new QGraphicsView( this ), tr( "Рентгенограмма 1" ) );
-    ui->tabWidget->addTab( new QGraphicsView( this ), tr( "Рентгенограмма 2" ) );
+    ui->tabWidget->addTab( new QGraphicsView( new MyScene(), this ), tr( "Рентгенограмма 1" ) );
+    ui->tabWidget->addTab( new QGraphicsView( new MyScene(), this ), tr( "Рентгенограмма 2" ) );
     QGraphicsDropShadowEffect* effect = new QGraphicsDropShadowEffect( this );
     effect->setBlurRadius( 20 );
     effect->setColor( Qt::white );
@@ -61,15 +61,15 @@ MyScene* Form2::getCurrentScene()
 
 void Form2::on_pushButton_4_clicked()
 {
-    if ( indOkano < 0.43 || indOkano > 0.58 )
+    /*if (ui->doubleSpinBox_3->value() < 0.43 || ui->doubleSpinBox_3->value() > 0.58)
     {
-        QMessageBox::critical( this, "Предупреждение", "Индекс Окано выходит за пределы требуемого диапазона. Применение программы невозможно" );
-        emit signal( false );
+        QMessageBox::critical(this, "Предупреждение", "Индекс Окано выходит за пределы требуемого диапазона. Применение программы невозможно");
+        emit signal(false);
     }
     else
-    {
-        emit signal( true );
-    }
+    {*/
+    emit signal( true );
+    //}
 }
 
 void Form2::on_toolButton_2_clicked()
@@ -84,4 +84,9 @@ void Form2::on_toolButton_clicked()
     getCurrentScene()->SetState( MyScene::Line );
     getCurrentScene()->setColorArrow( 0xf2ff66 );
     getCurrentScene()->setSpinBox( ui->doubleSpinBox );
+}
+
+void Form2::on_pushButton_clicked()
+{
+    getCurrentScene()->clear();
 }

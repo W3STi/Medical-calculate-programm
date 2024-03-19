@@ -42,6 +42,8 @@ private slots:
 
     void on_toolButton_clicked();
 
+    void on_pushButton_clicked();
+
 public slots:
     void getParam( double p );
 
